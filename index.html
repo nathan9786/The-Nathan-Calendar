@@ -1,0 +1,82 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Calendar 0 - 3000</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #0b0b0b;
+      color: white;
+      text-align: center;
+      padding-top: 60px;
+    }
+
+    #today {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    #yearBox {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    #barContainer {
+      width: 80%;
+      height: 30px;
+      background: #333;
+      margin: auto;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    #bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue);
+      transition: width 0.5s ease;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Calendar: Year 0 → 3000</h1>
+
+<div id="today"></div>
+<div id="yearBox"></div>
+
+<div id="barContainer">
+  <div id="bar"></div>
+</div>
+
+<script>
+
+function updateCalendar() {
+
+  const now = new Date();
+  const year = now.getFullYear();
+
+  // show today
+  document.getElementById("today").innerText =
+    "Today: " + now.toDateString();
+
+  // show current year
+  document.getElementById("yearBox").innerText =
+    "Year: " + year;
+
+  // progress 0 → 3000
+  const progress = (year / 3000) * 100;
+
+  document.getElementById("bar").style.width =
+    progress + "%";
+}
+
+updateCalendar();
+setInterval(updateCalendar, 1000);
+
+</script>
+
+</body>
+</html>
